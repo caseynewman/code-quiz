@@ -8,3 +8,22 @@
 // highlight red when incorrect
 
 // high scores & timer in flexbox?
+
+const startQuiz = document.querySelector('#start');
+
+
+
+const questions = []
+const correctAnswers = []
+
+
+const takeQuiz = () => {
+
+}
+
+
+
+
+
+
+startQuiz.addEventListener('click', takeQuiz)
