@@ -19,9 +19,29 @@ const correctAnswers = []
 
 const questionList = [
     {
-        question: 'Here is some text to ask a question',
-        options: [''],
-        answer: 4,
+        question: 'What creates the structure of your website?',
+        options: ['CSS', 'HTML', 'arrays', 'strings'],
+        answer: 1,
+    }
+    {
+        question: 'Which of the following is NOT a keyword for storing values?',
+        options: ['let', 'var', 'for', 'const'],
+        answer: 2,
+    }
+    {
+        question: 'What allows you to store key value pairs?',
+        options: ['functions', 'arrays', 'for loops', 'objects'],
+        answer: 3,
+    }
+    {
+        question:
+        options:
+        answer:
+    }
+    {
+        question:
+        options:
+        answer:
     }
 ]
 
