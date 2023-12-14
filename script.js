@@ -50,6 +50,14 @@ const takeQuiz = () => {
 
 }
 
+// const interval = setInterval(() => {
+    // decrement count
+    // display count
+
+    //if count < 0
+    // clear interval
+//}, 1000)
+
 
 
 
