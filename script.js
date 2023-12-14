@@ -14,8 +14,8 @@ const startQuiz = document.querySelector('#start');
 
 
 
-const questions = []
-const correctAnswers = []
+// const questions = []
+// const correctAnswers = []
 
 const questionList = [
     {
@@ -48,6 +48,9 @@ const questionList = [
 
 const takeQuiz = () => {
 
+
+
+
 }
 
 // const interval = setInterval(() => {
@@ -57,6 +60,37 @@ const takeQuiz = () => {
     //if count < 0
     // clear interval
 //}, 1000)
+
+
+const quizContent = document.querySelector('#quiz-content')
+const next = document.querySelector('#next')
+let currentIndex = 0;
+
+const appendQuizContent = () => {
+    const question = document.createElement('p')
+    question.textContent = questionList[currentIndex].question
+
+    const options = document.createElement('a')
+    options.textContent = questionList[currentIndex].options
+
+
+    quizContent.appendChild(question)
+    quizContent.appendChild(options)
+}
+
+const incrementList = () => {
+    currentIndex++;
+    if(currentIndex >= questionList.length){
+        currentIndex = 0;
+    }
+
+    quizContent.innerHTML = ''
+    appendQuizContent();
+}
+
+
+appendQuizContent();
+
 
 
 
