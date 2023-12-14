@@ -48,7 +48,34 @@ const questionList = [
 
 const takeQuiz = () => {
 
-
+    const quizContent = document.querySelector('#quiz-content')
+    const next = document.querySelector('#next')
+    let currentIndex = 0;
+    
+    const appendQuizContent = () => {
+        const question = document.createElement('p')
+        question.textContent = questionList[currentIndex].question
+    
+        const options = document.createElement('li')
+        options.textContent = questionList[currentIndex].options
+    
+    
+        quizContent.appendChild(question)
+        quizContent.appendChild(options)
+    }
+    
+    const incrementList = () => {
+        currentIndex++;
+        if(currentIndex >= questionList.length){
+            currentIndex = 0;
+        }
+    
+        quizContent.innerHTML = ''
+        appendQuizContent();
+    }
+    
+    next.addEventListener('click', incrementList)
+    appendQuizContent();
 
 
 }
@@ -62,34 +89,7 @@ const takeQuiz = () => {
 //}, 1000)
 
 
-const quizContent = document.querySelector('#quiz-content')
-const next = document.querySelector('#next')
-let currentIndex = 0;
 
-const appendQuizContent = () => {
-    const question = document.createElement('p')
-    question.textContent = questionList[currentIndex].question
-
-    const options = document.createElement('a')
-    options.textContent = questionList[currentIndex].options
-
-
-    quizContent.appendChild(question)
-    quizContent.appendChild(options)
-}
-
-const incrementList = () => {
-    currentIndex++;
-    if(currentIndex >= questionList.length){
-        currentIndex = 0;
-    }
-
-    quizContent.innerHTML = ''
-    appendQuizContent();
-}
-
-
-appendQuizContent();
 
 
 
