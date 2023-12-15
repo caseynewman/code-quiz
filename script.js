@@ -10,6 +10,9 @@
 
 // high scores & timer in flexbox?
 
+
+
+
 const startQuiz = document.querySelector('#start');
 
 
@@ -46,10 +49,11 @@ const questionList = [
 ]
 
 
+
 const takeQuiz = () => {
 
     const quizContent = document.querySelector('#quiz-content')
-    const next = document.querySelector('#next')
+    const submitAnswer = document.querySelector('#submit')
     let currentIndex = 0;
     
     const appendQuizContent = () => {
@@ -72,13 +76,20 @@ const takeQuiz = () => {
     
         quizContent.innerHTML = ''
         appendQuizContent();
+
+        submitAnswer.addEventListener('click', incrementList)
+
     }
     
-    next.addEventListener('click', incrementList)
+
     appendQuizContent();
 
 
 }
+
+
+
+
 
 // const interval = setInterval(() => {
     // decrement count
@@ -87,12 +98,6 @@ const takeQuiz = () => {
     //if count < 0
     // clear interval
 //}, 1000)
-
-
-
-
-
-
 
 
 
