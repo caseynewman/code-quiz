@@ -15,7 +15,8 @@
 
 const startQuiz = document.querySelector('#start');
 const question = document.querySelector('#question');
-const options = document.querySelector('options');
+const optionsElement = document.querySelector('#options');
+const correctAnswer = document.querySelector('answer');
 
 
 const questionList = [
@@ -50,33 +51,46 @@ const questionList = [
 const takeQuiz = () => {
 
     const quizContent = document.querySelector('#quiz-content');
+    const timer = document.querySelector('#timer');
     let currentIndex = 0;
+    let count = 90;
 
+
+    // let interval = setInterval(() => {
+    //     count -= 1;
+    //     if(count === 0) {
+    //         clearInterval(interval);
+    //     }
+    // }, 1000)
+
+    // console.log(interval)
+
+
+    // const appendTimer = () => {
+    //     let count = document.createElement('p')
+    //     count.textContent = "Timer: " + count
+
+    //     timer.appendChild(count)
+    // }
+    
     
     const appendQuizContent = () => {
-        const question = document.createElement('h2')
-        question.textContent = questionList[currentIndex].question
-    
-        const options = document.createElement('div')
-        options.textContent = questionList[currentIndex].options
-    
-    
-        quizContent.appendChild(question)
-        quizContent.appendChild(options)
-    }
-    
-    // const incrementList = () => {
-    //     currentIndex++;
-    //     if(currentIndex >= questionList.length){
-    //         currentIndex = 0;
-    //     }
-    
-    //     quizContent.innerHTML = ''
-    //     appendQuizContent();
+        startQuiz.remove();
+        let question = document.createElement('h2')
+        question.textContent = questionList[currentIndex].question;
+        let currentList = questionList[currentIndex]
 
-        // submitAnswer.addEventListener('click', incrementList)
-    //     next.addEventListener('click', incrementList)
-    // }
+        for (i = 0 ; i < currentList.options.length ; i++) {
+            let selectEl = document.createElement('div');
+            optionsElement.appendChild(selectEl);
+            let text = document.createTextNode(currentList.options[i]);
+            selectEl.appendChild(text);
+            selectEl.setAttribute('class', 'option');
+        }
+
+        quizContent.appendChild(question)
+        quizContent.appendChild(optionsElement)
+    }
 
 
 
@@ -89,16 +103,19 @@ const takeQuiz = () => {
             currentIndex = 0;
         }
     
-        quizContent.innerHTML = ''
         appendQuizContent();
+        quizContent.innerHTML = ''
+
     }
 
 
 
     submitAnswer.addEventListener('click', nextQuestion)
     appendQuizContent();
-
+    // appendTimer();
 }
+
+
 
 // const interval = setInterval(() => {
     // decrement count

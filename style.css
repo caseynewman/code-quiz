@@ -75,10 +75,6 @@ header {
     cursor: pointer;
 }
 
-button.hide {
-    display: none;
-  }
-
 #submit {
     padding: 10px 20px;
     border-radius: 20px;
@@ -91,6 +87,11 @@ button.hide {
 }
 
 #options {
+    display: flex;
+    justify-content: center;
+}
+
+.option {
     padding: 5px 10px;
     border-radius: 20px;
     color: #333;
