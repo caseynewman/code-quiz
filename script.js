@@ -52,15 +52,17 @@ const questionList = [
 
 const takeQuiz = () => {
 
-    const quizContent = document.querySelector('#quiz-content');
-    let submitAnswer = document.querySelectorAll('.option');
+    const quizContent = document.querySelector('#quiz-content'); //div holding quiz info
+    let submitAnswer = document.querySelector('#option'); //gets id and sets element to variable
     let currentIndex = 0;
     
     
     const appendQuizContent = () => {
-        startQuiz.remove();
-        let question = document.createElement('h2')
+        startQuiz.remove(); //removes start button after click
+        quizContent.innerHTML = '' //clears array after click
+        let question = document.createElement('h2') //adds questions to page
         question.textContent = questionList[currentIndex].question;
+
         let currentList = questionList[currentIndex]
 
         for (i = 0 ; i < currentList.options.length ; i++) {
@@ -68,21 +70,32 @@ const takeQuiz = () => {
             optionsElement.appendChild(selectEl);
             let text = document.createTextNode(currentList.options[i]);
             selectEl.appendChild(text);
-            selectEl.setAttribute('class', 'option');
-            selectEl.setAttribute('value', i);
+            selectEl.setAttribute('id', 'option'); //sets option divs as ids
+            selectEl.setAttribute('value', i); //gives number values to options
         }
 
+        quizContent.appendChild(question) //adds question to page
+        quizContent.appendChild(optionsElement) //adds options to page
 
-        quizContent.appendChild(question)
-        quizContent.appendChild(optionsElement)
 
+    }
 
-        // let submitAnswer = document.querySelectorAll('.option');
+    
+    const submit = () => {
+        nextQuestion();
 
-        // submitAnswer.addEventListener('click', checkAnswer);
+        submitAnswer.addEventListener('click', submit);
+
     }
 
 
+    const nextQuestion = () => {
+        currentIndex++;
+        // if(currentIndex >= questionList.length){
+        // }
+    
+        appendQuizContent();
+    }
     
     const checkAnswer = (event) => {
         let clickedOption = EventTarget;
@@ -91,34 +104,28 @@ const takeQuiz = () => {
         }
         //get event out of element, pull value out === questionList[currentIndex].answer ? 
         //green or red
-
-        nextQuestion();
     }
 
+            // submitAnswer.addEventListener('click', checkAnswer);
 
 
-    const nextQuestion = () => {
-        currentIndex++;
-        if(currentIndex >= questionList.length){
-            currentIndex = 0;
-        }
-    
-        appendQuizContent();
-        quizContent.innerHTML = ''
-    }
 
+//need click event on button that calls next question
 
     appendQuizContent();
     // appendTimer();
 
-
-    submitAnswer.addEventListener('click', checkAnswer);
 
 }
 
 
 
 startQuiz.addEventListener('click', takeQuiz)
+
+
+
+
+
 
 
 

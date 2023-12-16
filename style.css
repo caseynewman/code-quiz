@@ -93,7 +93,7 @@ header {
     gap: 10px;
 }
 
-.option {
+#option {
     padding: 10px 20px;
     border-radius: 20px;
     font-size: .9em;
