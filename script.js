@@ -14,11 +14,9 @@
 
 
 const startQuiz = document.querySelector('#start');
+const question = document.querySelector('#question');
+const options = document.querySelector('options');
 
-
-
-// const questions = []
-// const correctAnswers = []
 
 const questionList = [
     {
@@ -49,18 +47,17 @@ const questionList = [
 ]
 
 
-
 const takeQuiz = () => {
 
-    const quizContent = document.querySelector('#quiz-content')
-    const submitAnswer = document.querySelector('#submit')
+    const quizContent = document.querySelector('#quiz-content');
     let currentIndex = 0;
+
     
     const appendQuizContent = () => {
-        const question = document.createElement('p')
+        const question = document.createElement('h2')
         question.textContent = questionList[currentIndex].question
     
-        const options = document.createElement('li')
+        const options = document.createElement('div')
         options.textContent = questionList[currentIndex].options
     
     
@@ -68,7 +65,25 @@ const takeQuiz = () => {
         quizContent.appendChild(options)
     }
     
-    const incrementList = () => {
+    // const incrementList = () => {
+    //     currentIndex++;
+    //     if(currentIndex >= questionList.length){
+    //         currentIndex = 0;
+    //     }
+    
+    //     quizContent.innerHTML = ''
+    //     appendQuizContent();
+
+        // submitAnswer.addEventListener('click', incrementList)
+    //     next.addEventListener('click', incrementList)
+    // }
+
+
+
+    const submitAnswer = document.querySelector('#submit');
+
+
+    const nextQuestion = () => {
         currentIndex++;
         if(currentIndex >= questionList.length){
             currentIndex = 0;
@@ -76,20 +91,14 @@ const takeQuiz = () => {
     
         quizContent.innerHTML = ''
         appendQuizContent();
-
-        submitAnswer.addEventListener('click', incrementList)
-
     }
-    
 
+
+
+    submitAnswer.addEventListener('click', nextQuestion)
     appendQuizContent();
 
-
 }
-
-
-
-
 
 // const interval = setInterval(() => {
     // decrement count
