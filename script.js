@@ -17,6 +17,11 @@ const startQuiz = document.querySelector('#start');
 const question = document.querySelector('#question');
 const optionsElement = document.querySelector('#options-container');
 const correctAnswer = document.querySelector('answer');
+const quizContent = document.querySelector('#quiz-content'); //div holding quiz info
+let submitAnswer = document.querySelectorAll('.option'); //gets id and sets element to variable
+let currentIndex = 0;
+
+
 
 
 
@@ -36,29 +41,20 @@ const questionList = [
         question: 'What allows you to store key value pairs?',
         options: ['functions', 'arrays', 'for loops', 'objects'],
         answer: 3,
-    },
-    {
-        question: "Next question",
-        options: [''],
-        answer: 0,
-    },
-    {
-        question: 'Next questions',
-        options: [''],
-        answer: 3,
     }
 ]
 
 
 const takeQuiz = () => {
+    appendQuizContent();
+    // startQuiz.remove(); //removes start button after click
+    optionsElement.addEventListener('click', submit)
+}
 
-    const quizContent = document.querySelector('#quiz-content'); //div holding quiz info
-    let submitAnswer = document.querySelector('#option'); //gets id and sets element to variable
-    let currentIndex = 0;
-    
-    
+startQuiz.addEventListener('click', takeQuiz)
+
     const appendQuizContent = () => {
-        startQuiz.remove(); //removes start button after click
+        optionsElement.innerHTML = ''
         quizContent.innerHTML = '' //clears array after click
         let question = document.createElement('h2') //adds questions to page
         question.textContent = questionList[currentIndex].question;
@@ -70,24 +66,19 @@ const takeQuiz = () => {
             optionsElement.appendChild(selectEl);
             let text = document.createTextNode(currentList.options[i]);
             selectEl.appendChild(text);
-            selectEl.setAttribute('id', 'option'); //sets option divs as ids
+            selectEl.setAttribute('class', 'option'); //sets option divs as ids
             selectEl.setAttribute('value', i); //gives number values to options
         }
 
         quizContent.appendChild(question) //adds question to page
         quizContent.appendChild(optionsElement) //adds options to page
 
-
     }
 
-    
     const submit = () => {
-        nextQuestion();
-
-        submitAnswer.addEventListener('click', submit);
-
+        checkAnswer();
+        setTimeout(nextQuestion, 2000);
     }
-
 
     const nextQuestion = () => {
         currentIndex++;
@@ -96,9 +87,12 @@ const takeQuiz = () => {
     
         appendQuizContent();
     }
+
+
     
     const checkAnswer = (event) => {
-        let clickedOption = EventTarget;
+        let currentList = questionList[currentIndex];
+        let clickedOption = this;
         if (clickedOption.value === currentList.answer) {
             console.log ('success!');
         }
@@ -106,21 +100,13 @@ const takeQuiz = () => {
         //green or red
     }
 
-            // submitAnswer.addEventListener('click', checkAnswer);
 
 
 
-//need click event on button that calls next question
-
-    appendQuizContent();
-    // appendTimer();
-
-
-}
 
 
 
-startQuiz.addEventListener('click', takeQuiz)
+
 
 
 
@@ -161,3 +147,5 @@ startQuiz.addEventListener('click', takeQuiz)
 
     //     timer.appendChild(count)
     // }
+
+    // appendTimer();
