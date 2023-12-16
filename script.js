@@ -15,8 +15,9 @@
 
 const startQuiz = document.querySelector('#start');
 const question = document.querySelector('#question');
-const optionsElement = document.querySelector('#options');
+const optionsElement = document.querySelector('#options-container');
 const correctAnswer = document.querySelector('answer');
+
 
 
 
@@ -52,27 +53,8 @@ const questionList = [
 const takeQuiz = () => {
 
     const quizContent = document.querySelector('#quiz-content');
-    const timer = document.querySelector('#timer');
+    let submitAnswer = document.querySelectorAll('.option');
     let currentIndex = 0;
-    let count = 90;
-
-
-    // let interval = setInterval(() => {
-    //     count -= 1;
-    //     if(count === 0) {
-    //         clearInterval(interval);
-    //     }
-    // }, 1000)
-
-    // console.log(interval)
-
-
-    // const appendTimer = () => {
-    //     let count = document.createElement('p')
-    //     count.textContent = "Timer: " + count
-
-    //     timer.appendChild(count)
-    // }
     
     
     const appendQuizContent = () => {
@@ -95,20 +77,25 @@ const takeQuiz = () => {
         quizContent.appendChild(optionsElement)
 
 
+        // let submitAnswer = document.querySelectorAll('.option');
 
-        let submitAnswer = document.querySelector('.option');
-
-        submitAnswer.addEventListener('click', checkAnswer);
-
-
+        // submitAnswer.addEventListener('click', checkAnswer);
     }
 
+
+    
     const checkAnswer = (event) => {
+        let clickedOption = EventTarget;
+        if (clickedOption.value === currentList.answer) {
+            console.log ('success!');
+        }
         //get event out of element, pull value out === questionList[currentIndex].answer ? 
         //green or red
 
         nextQuestion();
     }
+
+
 
     const nextQuestion = () => {
         currentIndex++;
@@ -118,37 +105,52 @@ const takeQuiz = () => {
     
         appendQuizContent();
         quizContent.innerHTML = ''
-    
     }
 
 
     appendQuizContent();
     // appendTimer();
+
+
+    submitAnswer.addEventListener('click', checkAnswer);
+
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-// const interval = setInterval(() => {
-    // decrement count
-    // display count
-
-    //if count < 0
-    // clear interval
-//}, 1000)
-
-
-
-
 startQuiz.addEventListener('click', takeQuiz)
+
+
+
+
+
+
+    // const timer = document.querySelector('#timer');
+
+
+    // const interval = setInterval(() => {
+        // decrement count
+        // display count
+
+        //if count < 0
+        // clear interval
+    //}, 1000)
+
+
+
+    // let interval = setInterval(() => {
+    //     count -= 1;
+    //     if(count === 0) {
+    //         clearInterval(interval);
+    //     }
+    // }, 1000)
+
+    // console.log(interval)
+
+
+    // const appendTimer = () => {
+    //     let count = document.createElement('p')
+    //     count.textContent = "Timer: " + count
+
+    //     timer.appendChild(count)
+    // }
