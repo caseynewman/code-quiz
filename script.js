@@ -19,6 +19,7 @@ const optionsElement = document.querySelector('#options');
 const correctAnswer = document.querySelector('answer');
 
 
+
 const questionList = [
     {
         question: 'What creates the structure of your website?',
@@ -86,16 +87,28 @@ const takeQuiz = () => {
             let text = document.createTextNode(currentList.options[i]);
             selectEl.appendChild(text);
             selectEl.setAttribute('class', 'option');
+            selectEl.setAttribute('value', i);
         }
+
 
         quizContent.appendChild(question)
         quizContent.appendChild(optionsElement)
+
+
+
+        let submitAnswer = document.querySelector('.option');
+
+        submitAnswer.addEventListener('click', checkAnswer);
+
+
     }
 
+    const checkAnswer = (event) => {
+        //get event out of element, pull value out === questionList[currentIndex].answer ? 
+        //green or red
 
-
-    const submitAnswer = document.querySelector('#submit');
-
+        nextQuestion();
+    }
 
     const nextQuestion = () => {
         currentIndex++;
@@ -105,15 +118,25 @@ const takeQuiz = () => {
     
         appendQuizContent();
         quizContent.innerHTML = ''
-
+    
     }
 
 
-
-    submitAnswer.addEventListener('click', nextQuestion)
     appendQuizContent();
     // appendTimer();
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
