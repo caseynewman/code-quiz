@@ -116,17 +116,17 @@ const checkAnswer = (event) => {
     let correctAnswer = answerOptions[answer];
     let color;
     if (answerValue === answer) {
-        color = 'green';
+        correctAnswer.setAttribute('class', 'green');
         score += 10;
     } else {
-        color = 'red';
+        clickedOption.setAttribute('class', 'red');
         intervalCount -= 10;
         if (intervalCount <= 0) {
             intervalCount = 0;
         }
         timer.textContent = intervalCount;
     }
-    correctAnswer.style.backgroundColor = 'green';
+    correctAnswer.setAttribute('class', 'green');
     clickedOption.style.backgroundColor = color;
 }
 
