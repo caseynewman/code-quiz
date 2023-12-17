@@ -44,6 +44,11 @@ const questionList = [
         options: ['truthean', 'number', 'boolean', 'string'],
         answer: 2,
     },
+    {
+        question: 'Which of the following is an ID?',
+        options: ['.quiz', '.id', '/container', '#quiz'],
+        answer: 3,
+    }
 ]
 
 
