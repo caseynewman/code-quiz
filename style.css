@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: rgb(237, 226, 222);
+    background-color: #fdeae3;
     color: #333;
     text-align: center;
     font-size: 16px;
@@ -66,7 +66,7 @@ header {
     min-height: 500px;
     flex-grow: 1;
     flex-shrink: 1;
-    padding: 20px;
+    padding: 30px;
     border: 1px solid #000;
 }
 
