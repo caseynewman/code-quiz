@@ -53,7 +53,7 @@ header {
     margin-bottom: 50px;
 }
 
-#quiz-content {
+#quiz-container {
     display: flex;
     flex-direction: column;
     justify-content: center;

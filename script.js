@@ -35,9 +35,14 @@ const questionList = [
         answer: 3,
     },
     {
-        question: 'What allows you to store key value pairs?',
-        options: ['functions', 'arrays', 'for loops', 'objects'],
-        answer: 3,
+        question: 'Which HTML tag is used for JavaScript?',
+        options: ['<script>', '<style>', '<src>', '<scripting>'],
+        answer: 0,
+    },
+    {
+        question: 'When a value is true or false, what type of data is it?',
+        options: ['truthean', 'number', 'boolean', 'string'],
+        answer: 2,
     },
 ]
 
@@ -86,8 +91,8 @@ const nextQuestion = () => {
     clearContent();
     console.log(intervalCount);
     if (currentIndex + 1 > questionList.length || intervalCount <= 0) {
-        scoreboardElement.style.display="block";
-    } else {
+        scoreboardElement.style.display = 'block';
+        } else {
         appendQuizContent();
     }
 }
@@ -133,8 +138,8 @@ const countdown = () => {
 }
 
 const addTimesUpText = () => {
-        console.log("Times up!!");
-
+    console.log("Times up!!");
+    scoreboardElement.style.display = 'block';
 }
 
 
