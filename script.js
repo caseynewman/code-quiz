@@ -14,7 +14,7 @@ const submitButton = document.querySelector('#submit-initials')
 let answerOptions;
 let currentIndex = 0;
 let score = 0;
-let intervalCount = 15;
+let intervalCount = 60;
 
 
 
@@ -88,7 +88,7 @@ const appendQuizContent = () => {
 
 const submit = (event) => {
     checkAnswer(event);
-    setTimeout(nextQuestion, 1500);
+    setTimeout(nextQuestion, 1100);
 }
 
 const nextQuestion = () => {
