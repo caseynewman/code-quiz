@@ -4,13 +4,14 @@
 
 
 const startQuiz = document.querySelector('#start');
+const introBlurb = document.querySelector('#intro');
 const timer = document.querySelector('#counter');
 const question = document.querySelector('#question');
 const optionsElement = document.querySelector('#options-container');
 const correctAnswer = document.querySelector('answer');
 const quizContent = document.querySelector('#quiz-content');
 const scoreboardElement = document.querySelector('#scoreboard');
-const submitButton = document.querySelector('#submit-initials')
+const submitButton = document.querySelector('#submit-initials');
 let answerOptions;
 let currentIndex = 0;
 let score = 0;
@@ -54,6 +55,7 @@ const questionList = [
 
 const takeQuiz = () => {
     startQuiz.remove();
+    introBlurb.remove();
     countdown();
     appendQuizContent();
     optionsElement.addEventListener('click', submit);
