@@ -1,5 +1,4 @@
 // store high scores
-// set a timer - decrement time every time the answer is incorrect
 
 // high scores & timer in flexbox?
 
@@ -10,6 +9,8 @@ const question = document.querySelector('#question');
 const optionsElement = document.querySelector('#options-container');
 const correctAnswer = document.querySelector('answer');
 const quizContent = document.querySelector('#quiz-content');
+const scoreboardElement = document.querySelector('#scoreboard');
+const submitButton = document.querySelector('#submit-initials')
 let answerOptions;
 let currentIndex = 0;
 let score = 0;
@@ -32,14 +33,21 @@ const questionList = [
         question: 'What allows you to store key value pairs?',
         options: ['functions', 'arrays', 'for loops', 'objects'],
         answer: 3,
-    }
+    },
+    {
+        question: 'What allows you to store key value pairs?',
+        options: ['functions', 'arrays', 'for loops', 'objects'],
+        answer: 3,
+    },
 ]
 
 
 const takeQuiz = () => {
+    startQuiz.remove();
     countdown();
     appendQuizContent();
-    optionsElement.addEventListener('click', submit)
+    optionsElement.addEventListener('click', submit);
+    submitButton.addEventListener('click', setUserScores);
 }
 
 const clearContent = () => {
@@ -48,8 +56,7 @@ const clearContent = () => {
 }
 
 const appendQuizContent = () => {
-    clearContent();
-    let question = document.createElement('h2') //adds questions to page
+    let question = document.createElement('h2')
     question.textContent = questionList[currentIndex].question;
 
     let currentList = questionList[currentIndex]
@@ -59,24 +66,36 @@ const appendQuizContent = () => {
         optionsElement.appendChild(selectEl);
         let text = document.createTextNode(currentList.options[i]);
         selectEl.appendChild(text);
-        selectEl.setAttribute('class', 'option'); //sets option divs as ids
-        selectEl.setAttribute('value', i); //gives number values to options
+        selectEl.setAttribute('class', 'option');
+        selectEl.setAttribute('value', i);
     }
 
-    quizContent.appendChild(question) //adds question to page
-    quizContent.appendChild(optionsElement) //adds options to page
+    quizContent.appendChild(question)
+    quizContent.appendChild(optionsElement)
 
     answerOptions = document.querySelectorAll('.option');
 }
 
 const submit = (event) => {
     checkAnswer(event);
-    setTimeout(nextQuestion, 2000);
+    setTimeout(nextQuestion, 1500);
 }
 
 const nextQuestion = () => {
     currentIndex++;
-    appendQuizContent();
+    clearContent();
+    console.log(intervalCount);
+    if (currentIndex + 1 > questionList.length || intervalCount <= 0) {
+        scoreboardElement.style.display="block";
+    } else {
+        appendQuizContent();
+    }
+}
+
+const setUserScores = () => {
+    // get input and value
+    //localStorage.setItem("user", value);
+    //localStorage.setItem("score", score);
 }
 
 const checkAnswer = (event) => {
@@ -88,7 +107,7 @@ const checkAnswer = (event) => {
     let color;
     if (answerValue === answer) {
         color = 'green';
-        //add points to score
+        score += 10;
     } else {
         color = 'red';
         intervalCount -= 10;
@@ -106,6 +125,7 @@ const countdown = () => {
         timer.textContent = intervalCount;
         if(intervalCount <= 0) {
             addTimesUpText();
+            clearContent();
             clearInterval(interval);
         }
         intervalCount -= 1;
@@ -113,46 +133,11 @@ const countdown = () => {
 }
 
 const addTimesUpText = () => {
-        console.log ("Times up!!")
+        console.log("Times up!!");
 
 }
 
 
+
+
 startQuiz.addEventListener('click', takeQuiz)
-
-
-
-
-
-
-
-
-
-// const interval = setInterval(() => {
-// decrement count
-// display count
-
-//if count < 0
-// clear interval
-//}, 1000)
-
-
-
-// let interval = setInterval(() => {
-//     count -= 1;
-//     if(count === 0) {
-//         clearInterval(interval);
-//     }
-// }, 1000)
-
-// console.log(interval)
-
-
-// const appendTimer = () => {
-//     let count = document.createElement('p')
-//     count.textContent = "Timer: " + count
-
-//     timer.appendChild(count)
-// }
-
-// appendTimer();
