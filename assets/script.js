@@ -136,7 +136,6 @@ const countdown = () => {
     let interval = setInterval(() => {
         timer.textContent = intervalCount;
         if(intervalCount <= 0) {
-            gameOver();
             clearContent();
             clearInterval(interval);
         }
@@ -161,9 +160,15 @@ const countdown = () => {
 
 const gameOver = () => {
     if (currentIndex + 1 > questionList.length) {
-        console.log ("You finished!");
+        let youWin = document.createElement('h2');
+        scoreboardElement.appendChild(youWin);
+        let youWinText = document.createTextNode('You win!');
+        youWin.appendChild(youWinText);
     } else if (intervalCount <= 0) {
-        console.log ("Time's UP!");
+        let timesUp = document.createElement('h2');
+        scoreboardElement.appendChild(timesUp);
+        let timesUpText = document.createTextNode("Time's Up!");
+        timesUp.appendChild(timesUpText);
     }
 }
 
