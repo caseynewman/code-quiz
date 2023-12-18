@@ -97,6 +97,7 @@ const nextQuestion = () => {
     currentIndex++;
     clearContent();
     if (currentIndex + 1 > questionList.length || intervalCount <= 0) {
+        gameOver();
         scoreboardElement.style.display = 'block';
         } else {
         appendQuizContent();
@@ -135,7 +136,7 @@ const countdown = () => {
     let interval = setInterval(() => {
         timer.textContent = intervalCount;
         if(intervalCount <= 0) {
-            addTimesUpText();
+            gameOver();
             clearContent();
             clearInterval(interval);
         }
@@ -143,20 +144,28 @@ const countdown = () => {
     }, 1000)
 }
 
-const addTimesUpText = () => {
-    let currentList = questionList[currentIndex];
-    const lastQuestion = questionList[questionList.length - 1];
-    const timesUp = document.createElement('h2');
-    // if (currentList + 1 > lastQuestion) {
-    //     console.log("All done!"); }
-    if (intervalCount <= 0) {
-        console.log("Time's up!");
-    } else {
-        console.log("You finished!")
-    }
-    scoreboardElement.style.display = 'block';
-}
+// const addTimesUpText = () => {
+//     let currentList = questionList[currentIndex];
+//     const lastQuestion = questionList[questionList.length - 1];
+//     const timesUp = document.createElement('h2');
+//     // if (currentList + 1 > lastQuestion) {
+//     //     console.log("All done!"); }
+//     if (intervalCount <= 0) {
+//         console.log("Time's up!");
+//     } else {
+//         console.log("You finished!")
+//     }
+//     scoreboardElement.style.display = 'block';
+// }
 
+
+const gameOver = () => {
+    if (currentIndex + 1 > questionList.length) {
+        console.log ("You finished!");
+    } else if (intervalCount <= 0) {
+        console.log ("Time's UP!");
+    }
+}
 
 
 
