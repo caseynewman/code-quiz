@@ -108,7 +108,10 @@ const setUserScores = () => {
     // get input and value
     //localStorage.setItem("user", value);
     //localStorage.setItem("score", score);
+    //always push high score to new score
 }
+
+//highscore.push
 
 const checkAnswer = (event) => {
     let currentList = questionList[currentIndex];
@@ -160,15 +163,19 @@ const countdown = () => {
 
 const gameOver = () => {
     if (currentIndex + 1 > questionList.length) {
-        let youWin = document.createElement('h2');
+        const youWin = document.createElement('h2');
+        youWin.textContent = 'Congratulations! You win!';
         scoreboardElement.appendChild(youWin);
-        let youWinText = document.createTextNode('You win!');
-        youWin.appendChild(youWinText);
+        const youWinP = document.createElement('p');
+        youWinP.textContent = 'Enter your initials to save your score!';
+        scoreboardElement.appendChild(youWinP);
     } else if (intervalCount <= 0) {
-        let timesUp = document.createElement('h2');
+        const timesUp = document.createElement('h2');
+        timesUp.textContent = "Time's up!!";
         scoreboardElement.appendChild(timesUp);
-        let timesUpText = document.createTextNode("Time's Up!");
-        timesUp.appendChild(timesUpText);
+        const timesUpP = document.createElement('p');
+        timesUpP.textContent = "Enter your initials to save your score or hit refresh to try again!";
+        scoreboardElement.appendChild(timesUpP);
     }
 }
 
