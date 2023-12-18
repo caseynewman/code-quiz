@@ -15,7 +15,7 @@ const submitButton = document.querySelector('#submit-initials');
 let answerOptions;
 let currentIndex = 0;
 let score = 0;
-let intervalCount = 60;
+let intervalCount = 30;
 
 
 
@@ -96,7 +96,6 @@ const submit = (event) => {
 const nextQuestion = () => {
     currentIndex++;
     clearContent();
-    console.log(intervalCount);
     if (currentIndex + 1 > questionList.length || intervalCount <= 0) {
         scoreboardElement.style.display = 'block';
         } else {
@@ -145,8 +144,16 @@ const countdown = () => {
 }
 
 const addTimesUpText = () => {
-    const timesUp = document.createElement('h2')
-    timesUp.textContent = '';
+    let currentList = questionList[currentIndex];
+    const lastQuestion = questionList[questionList.length - 1];
+    const timesUp = document.createElement('h2');
+    // if (currentList + 1 > lastQuestion) {
+    //     console.log("All done!"); }
+    if (intervalCount <= 0) {
+        console.log("Time's up!");
+    } else {
+        console.log("You finished!")
+    }
     scoreboardElement.style.display = 'block';
 }
 
