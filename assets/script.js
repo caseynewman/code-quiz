@@ -146,7 +146,7 @@ const countdown = () => {
 
 const addTimesUpText = () => {
     const timesUp = document.createElement('h2')
-    timesUp.textContent = 'Time's up!';
+    timesUp.textContent = '';
     scoreboardElement.style.display = 'block';
 }
 
