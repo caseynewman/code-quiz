@@ -90,7 +90,7 @@ const appendQuizContent = () => {
 
 const submit = (event) => {
     checkAnswer(event);
-    setTimeout(nextQuestion, 1100);
+    setTimeout(nextQuestion, 1000);
 }
 
 const nextQuestion = () => {
@@ -145,7 +145,8 @@ const countdown = () => {
 }
 
 const addTimesUpText = () => {
-    console.log("Times up!!");
+    let timesUp = document.createElement('h2')
+    timesUp.textContent = ('Times up!!');
     scoreboardElement.style.display = 'block';
 }
 
