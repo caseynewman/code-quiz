@@ -193,8 +193,10 @@ const displayHighScores = () => {
     scoreboardElement.appendChild(scoresList);
 }
 
-
-
-viewHighScores.addEventListener('click', displayHighScores)
+viewHighScores.addEventListener('click', () => {
+    clearContent();
+    scoreboardElement.style.display = 'block';
+    displayHighScores();
+})
 
 startQuiz.addEventListener('click', takeQuiz)
