@@ -175,3 +175,7 @@ header {
 #high-score-input {
     padding: 10px;
 }
+
+#highscores {
+    cursor: pointer;
+}

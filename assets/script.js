@@ -4,7 +4,8 @@
 
 
 const startQuiz = document.querySelector('#start');
-const introBlurb = document.querySelector('#intro');
+const introBlurb = document.querySelector('#intro-h2');
+const introP = document.querySelector('#intro-p');
 const timer = document.querySelector('#counter');
 const question = document.querySelector('#question');
 const optionsElement = document.querySelector('#options-container');
@@ -16,7 +17,7 @@ const viewHighScores = document.querySelector('#highscores');
 let scores = JSON.parse(localStorage.getItem('scores')) || [];
 let answerOptions;
 let currentIndex = 0;
-let intervalCount = 30;
+let intervalCount = 60;
 let score = 0;
 let interval;
 
@@ -59,6 +60,7 @@ const questionList = [
 const takeQuiz = () => {
     startQuiz.remove();
     introBlurb.remove();
+    introP.remove();
     countdown();
     appendQuizContent();
     optionsElement.addEventListener('click', submit);
@@ -100,8 +102,8 @@ const nextQuestion = () => {
     currentIndex++;
     clearContent();
     if (currentIndex + 1 > questionList.length || intervalCount <= 0) {
-        gameOver();
         scoreboardElement.style.display = 'block';
+        gameOver();
     } else {
         appendQuizContent();
     }
@@ -139,6 +141,7 @@ const countdown = () => {
         if (intervalCount <= 0) {
             clearContent();
             clearInterval(interval);
+            gameOver();
         }
         intervalCount -= 1;
     }, 1000)

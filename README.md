@@ -6,13 +6,12 @@ I built the Code Quiz as a tool to help test users' coding knowledge, and for my
 
 I used classes in CSS to indicate whether or not a selected answer was correct. I learned the importance of breaking down larger functions into smaller functions for each individual action. I also gained a better understanding of local storage and how to save key value pairs to it, as well as how to retrieve them.
 
+![Code Quiz Screenshot](/assets/images/code-quiz-screenshot.png)
 [Deployed Website](https://caseynewman.github.io/code-quiz/)
 
 ## Usage
 
 To take the Code Quiz, click the start button on the home page. The timer begins when you hit start. Answer as many questions correctly as you can within the time limit. If you answer a question incorrectly, 10 seconds will be deducted from your time. The number of seconds you have left at the end is your score. Enter your initials at the end to save your score, and play again to try to beat it.
-
-![Code Quiz Screenshot](/assets/images/code-quiz-screenshot.png)
 
 ## Credits
 
