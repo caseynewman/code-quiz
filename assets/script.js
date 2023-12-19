@@ -40,6 +40,11 @@ const questionList = [
         answer: 0,
     },
     {
+        question: 'What was the first version of JavaScript called?',
+        options: ['Latte', 'Mocha', 'SunScript', 'MicroScript'],
+        answer: 1,
+    },
+    {
         question: 'When a value is true or false, what type of data is it?',
         options: ['truthean', 'number', 'boolean', 'string'],
         answer: 2,
@@ -134,16 +139,17 @@ const countdown = () => {
     interval = setInterval(() => {
         timer.textContent = intervalCount;
         if (intervalCount <= 0) {
-            clearContent();
             clearInterval(interval);
-            // gameOver();
+            gameOver();
         }
         intervalCount -= 1;
     }, 1000)
 }
 
 const gameOver = () => {
+    clearContent();
     clearInterval(interval);
+    scoreboardElement.style.display = 'block';
     if (currentIndex + 1 > questionList.length) {
         const youWin = document.createElement('h2');
         youWin.textContent = 'Congratulations! You finished in time!';
