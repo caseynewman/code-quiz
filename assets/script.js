@@ -12,11 +12,11 @@ const correctAnswer = document.querySelector('answer');
 const quizContent = document.querySelector('#quiz-content');
 const scoreboardElement = document.querySelector('#scoreboard');
 const submitButton = document.querySelector('#submit-initials');
-let correctAnswersCount = 0;
 let answerOptions;
 let currentIndex = 0;
 let intervalCount = 30;
 let score = 0;
+let interval;
 
 
 
@@ -126,19 +126,13 @@ const checkAnswer = (event) => {
     clickedOption.style.backgroundColor = color;
 }
 
-const calculateScore = (event) => {
-    let clickedOption = event.target;
-    let answerValue = parseInt(clickedOption.getAttribute('value'));
-    let answer = parseInt(questionList.answer);
-    if (answerValue === answer) {
-        correctAnswersCount ++;
-    }
-    score = correctAnswersCount * 10;
+const calculateScore = () => {
+    score = intervalCount + 1;
     console.log (score);
 }
 
 const countdown = () => {
-    let interval = setInterval(() => {
+    interval = setInterval(() => {
         timer.textContent = intervalCount;
         if(intervalCount <= 0) {
             clearContent();
@@ -148,14 +142,8 @@ const countdown = () => {
     }, 1000)
 }
 
-
-    // get input and value
-    //localStorage.setItem("user", value);
-    //localStorage.setItem("score", score);
-    //always push high score to new score
-    //highscore.push
-
 const gameOver = () => {
+    clearInterval(interval);
     if (currentIndex + 1 > questionList.length) {
         const youWin = document.createElement('h2');
         youWin.textContent = 'Congratulations! You finished in time!';
@@ -172,6 +160,16 @@ const gameOver = () => {
         scoreboardElement.appendChild(timesUpP);
     }
 }
+
+const updateScores = () => {
+    JSON.parse(localStorage.getItem('scores'));
+    const newScore = {
+        initials: '',
+        score: '',
+    }
+    localStorage.setItem('scores', stringifiedData);
+}
+
 
 
 
