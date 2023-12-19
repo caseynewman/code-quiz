@@ -12,10 +12,11 @@ const correctAnswer = document.querySelector('answer');
 const quizContent = document.querySelector('#quiz-content');
 const scoreboardElement = document.querySelector('#scoreboard');
 const submitButton = document.querySelector('#submit-initials');
+let correctAnswersCount = 0;
 let answerOptions;
 let currentIndex = 0;
-let score = 0;
 let intervalCount = 30;
+let score = 0;
 
 
 
@@ -59,7 +60,7 @@ const takeQuiz = () => {
     countdown();
     appendQuizContent();
     optionsElement.addEventListener('click', submit);
-    submitButton.addEventListener('click', setUserScores);
+    submitButton.addEventListener('click', calculateScore);
 }
 
 const clearContent = () => {
@@ -104,15 +105,6 @@ const nextQuestion = () => {
     }
 }
 
-const setUserScores = () => {
-    // get input and value
-    //localStorage.setItem("user", value);
-    //localStorage.setItem("score", score);
-    //always push high score to new score
-}
-
-//highscore.push
-
 const checkAnswer = (event) => {
     let currentList = questionList[currentIndex];
     let clickedOption = event.target;
@@ -122,7 +114,6 @@ const checkAnswer = (event) => {
     let color;
     if (answerValue === answer) {
         correctAnswer.setAttribute('class', 'green');
-        score += 10;
     } else {
         clickedOption.setAttribute('class', 'red');
         intervalCount -= 10;
@@ -133,6 +124,17 @@ const checkAnswer = (event) => {
     }
     correctAnswer.setAttribute('class', 'green');
     clickedOption.style.backgroundColor = color;
+}
+
+const calculateScore = (event) => {
+    let clickedOption = event.target;
+    let answerValue = parseInt(clickedOption.getAttribute('value'));
+    let answer = parseInt(questionList.answer);
+    if (answerValue === answer) {
+        correctAnswersCount ++;
+    }
+    score = correctAnswersCount * 10;
+    console.log (score);
 }
 
 const countdown = () => {
@@ -146,35 +148,27 @@ const countdown = () => {
     }, 1000)
 }
 
-// const addTimesUpText = () => {
-//     let currentList = questionList[currentIndex];
-//     const lastQuestion = questionList[questionList.length - 1];
-//     const timesUp = document.createElement('h2');
-//     // if (currentList + 1 > lastQuestion) {
-//     //     console.log("All done!"); }
-//     if (intervalCount <= 0) {
-//         console.log("Time's up!");
-//     } else {
-//         console.log("You finished!")
-//     }
-//     scoreboardElement.style.display = 'block';
-// }
 
+    // get input and value
+    //localStorage.setItem("user", value);
+    //localStorage.setItem("score", score);
+    //always push high score to new score
+    //highscore.push
 
 const gameOver = () => {
     if (currentIndex + 1 > questionList.length) {
         const youWin = document.createElement('h2');
-        youWin.textContent = 'Congratulations! You win!';
+        youWin.textContent = 'Congratulations! You finished in time!';
         scoreboardElement.appendChild(youWin);
         const youWinP = document.createElement('p');
-        youWinP.textContent = 'Enter your initials to save your score!';
+        youWinP.textContent = 'Enter your initials to save your score.';
         scoreboardElement.appendChild(youWinP);
     } else if (intervalCount <= 0) {
         const timesUp = document.createElement('h2');
         timesUp.textContent = "Time's up!!";
         scoreboardElement.appendChild(timesUp);
         const timesUpP = document.createElement('p');
-        timesUpP.textContent = "Enter your initials to save your score or hit refresh to try again!";
+        timesUpP.textContent = "Enter your initials to save your score or hit refresh to try again.";
         scoreboardElement.appendChild(timesUpP);
     }
 }

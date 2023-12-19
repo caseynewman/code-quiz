@@ -2,15 +2,7 @@
 
 ## Description
 
-
-
-
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+I built the Code Quiz as a tool to help test the users' coding knowledge, and to learn more about the the DOM and interactivity of JavaScript myself. I learned so much from this project in terms of using JS to append things to the application as opposed to hard-coding everything into the HTML.
 
 ## Table of Contents (Optional)
 
