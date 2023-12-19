@@ -12,7 +12,7 @@ const viewHighScores = document.querySelector('#highscores');
 let scores = JSON.parse(localStorage.getItem('scores')) || [];
 let answerOptions;
 let currentIndex = 0;
-let intervalCount = 60;
+let intervalCount = 45;
 let score = 0;
 let interval;
 
