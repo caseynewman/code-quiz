@@ -12,6 +12,7 @@ const correctAnswer = document.querySelector('answer');
 const quizContent = document.querySelector('#quiz-content');
 const scoreboardElement = document.querySelector('#scoreboard');
 const submitButton = document.querySelector('#submit-initials');
+const viewHighScores = document.querySelector('#highscores');
 let scores = JSON.parse(localStorage.getItem('scores')) || [];
 let answerOptions;
 let currentIndex = 0;
@@ -101,7 +102,7 @@ const nextQuestion = () => {
     if (currentIndex + 1 > questionList.length || intervalCount <= 0) {
         gameOver();
         scoreboardElement.style.display = 'block';
-        } else {
+    } else {
         appendQuizContent();
     }
 }
@@ -135,7 +136,7 @@ const calculateScore = () => {
 const countdown = () => {
     interval = setInterval(() => {
         timer.textContent = intervalCount;
-        if(intervalCount <= 0) {
+        if (intervalCount <= 0) {
             clearContent();
             clearInterval(interval);
         }
@@ -164,18 +165,18 @@ const gameOver = () => {
 
 const updateScores = () => {
     const initials = document.getElementById('initials').value.trim();
-        if (initials !== '') {
-            const newScore = {
-                initials: initials,
-                score: score,
-            }
-            scores.push(newScore);
-            scores.sort((a, b) => b.score - a.score);
-            localStorage.setItem('scores', JSON.stringify(scores));
-            displayHighScores();
-        } else {
-            alert('Please enter your initials.');
+    if (initials !== '') {
+        const newScore = {
+            initials: initials,
+            score: score,
         }
+        scores.push(newScore);
+        scores.sort((a, b) => b.score - a.score);
+        localStorage.setItem('scores', JSON.stringify(scores));
+        displayHighScores();
+    } else {
+        alert('Please enter your initials.');
+    }
 }
 
 const displayHighScores = () => {
@@ -194,6 +195,6 @@ const displayHighScores = () => {
 
 
 
-
+viewHighScores.addEventListener('click', displayHighScores)
 
 startQuiz.addEventListener('click', takeQuiz)
