@@ -1,8 +1,3 @@
-// store high scores
-
-// high scores & timer in flexbox?
-
-
 const startQuiz = document.querySelector('#start');
 const introBlurb = document.querySelector('#intro-h2');
 const introP = document.querySelector('#intro-p');
@@ -102,8 +97,8 @@ const nextQuestion = () => {
     currentIndex++;
     clearContent();
     if (currentIndex + 1 > questionList.length || intervalCount <= 0) {
-        scoreboardElement.style.display = 'block';
         gameOver();
+        scoreboardElement.style.display = 'block';
     } else {
         appendQuizContent();
     }
@@ -141,7 +136,7 @@ const countdown = () => {
         if (intervalCount <= 0) {
             clearContent();
             clearInterval(interval);
-            gameOver();
+            // gameOver();
         }
         intervalCount -= 1;
     }, 1000)
