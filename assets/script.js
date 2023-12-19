@@ -12,6 +12,7 @@ const correctAnswer = document.querySelector('answer');
 const quizContent = document.querySelector('#quiz-content');
 const scoreboardElement = document.querySelector('#scoreboard');
 const submitButton = document.querySelector('#submit-initials');
+let scores = JSON.parse(localStorage.getItem('scores')) || [];
 let answerOptions;
 let currentIndex = 0;
 let intervalCount = 30;
@@ -128,7 +129,7 @@ const checkAnswer = (event) => {
 
 const calculateScore = () => {
     score = intervalCount + 1;
-    console.log (score);
+    updateScores();
 }
 
 const countdown = () => {
@@ -162,13 +163,35 @@ const gameOver = () => {
 }
 
 const updateScores = () => {
-    JSON.parse(localStorage.getItem('scores'));
-    const newScore = {
-        initials: '',
-        score: '',
-    }
-    localStorage.setItem('scores', stringifiedData);
+    const initials = document.getElementById('initials').value.trim();
+        if (initials !== '') {
+            const newScore = {
+                initials: initials,
+                score: score,
+            }
+            scores.push(newScore);
+            scores.sort((a, b) => b.score - a.score);
+            localStorage.setItem('scores', JSON.stringify(scores));
+            displayHighScores();
+        } else {
+            alert('Please enter your initials.');
+        }
 }
+
+const displayHighScores = () => {
+    scoreboardElement.innerHTML = '';
+    const highScoresHeading = document.createElement('h2');
+    highScoresHeading.textContent = 'High Scores';
+    scoreboardElement.appendChild(highScoresHeading);
+    const scoresList = document.createElement('ul');
+    scores.forEach((score, index) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${index + 1}. ${score.initials}: ${score.score}`;
+        scoresList.appendChild(listItem);
+    })
+    scoreboardElement.appendChild(scoresList);
+}
+
 
 
 

@@ -2,58 +2,19 @@
 
 ## Description
 
-I built the Code Quiz as a tool to help test the users' coding knowledge, and to learn more about the the DOM and interactivity of JavaScript myself. I learned so much from this project in terms of using JS to append things to the application as opposed to hard-coding everything into the HTML.
+I built the Code Quiz as a tool to help test the users' coding knowledge, and to learn more about the the DOM and interactivity of JavaScript. In building this project, I learned how to dynamically add content to an application as opposed to hardcoding it in. 
 
-## Table of Contents (Optional)
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
-
-## Installation
-
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+[Deployed Website]()
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+To take the Code Quiz, click the start button on the home page. The timer begins when you hit start. Answer as many questions correctly as you can within the time limit. If you answer a question incorrectly, 10 seconds will be deducted from your time. The number of seconds you have left at the end is your score. Enter your initials at the end to save your score. Play again to try to beat your score.
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
-
-![alt text](assets/images/screenshot.png)
+![Code Quiz Screenshot]()
 
 ## Credits
 
-List your collaborators, if any, with links to their GitHub profiles.
-
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-
-If you followed tutorials, include links to those here as well.
-
-## License
-
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
-
----
-
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-
-## Badges
-
-![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
-
-Badges aren't necessary, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-
-## Features
-
-If your project has a lot of features, list them here.
-
-## How to Contribute
-
-If you created an application or package and would like other developers to contribute to it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
+For this project, I worked with a tutor, Mazin Abed, to gain a better understanding of local storage and how to use it. I also worked with AskBCS Learning Assistants for more guidance with tracking scores and saving them at the end. I was also fortunate enough to have a programmer friend answer some questions for me throughout the process.
 
 ## Tests
 
