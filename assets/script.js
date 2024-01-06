@@ -79,12 +79,15 @@ const appendQuizContent = () => {
     let currentList = questionList[currentIndex]
 
     for (i = 0; i < currentList.options.length; i++) {
-        let selectEl = document.createElement('div');
-        optionsElement.appendChild(selectEl);
-        let text = document.createTextNode(currentList.options[i]);
-        selectEl.appendChild(text);
-        selectEl.setAttribute('class', 'option');
-        selectEl.setAttribute('value', i);
+        const choiceEl = document.createElement('li');
+        const buttonEl = document.createElement('button');
+
+        buttonEl.setAttribute('class', 'option');
+        buttonEl.setAttribute('value', i);
+        buttonEl.textContent = currentList.options[i];
+
+        choiceEl.appendChild(buttonEl);
+        optionsElement.appendChild(choiceEl);
     }
 
     quizContent.appendChild(question)
@@ -116,6 +119,7 @@ const checkAnswer = (event) => {
     let answer = parseInt(currentList.answer);
     let correctAnswer = answerOptions[answer];
     let color;
+    console.log(answerOptions)
     if (answerValue === answer) {
         correctAnswer.setAttribute('class', 'green');
     } else {
